@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NEXUS GAMING | Universo Gamer</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --bg: #080b14;
+    --card: #111827;
+    --purple: #a855f7;
+    --cyan: #00e5ff;
+    --text: #f5f7ff;
+    --muted: #9ca3af;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+/* BARRA DE NAVEGACIÓN */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(8,11,20,0.94);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid #22283a;
+}
+
+nav {
+    max-width: 1250px;
+    margin: auto;
+    padding: 18px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 23px;
+    font-weight: 800;
+    color: white;
+}
+
+.logo span {
+    color: var(--cyan);
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #cbd5e1;
+    font-size: 14px;
+    transition: .3s;
+}
+
+.nav-links a:hover {
+    color: var(--cyan);
+}
+
+.fav-counter {
+    background: var(--purple);
+    padding: 7px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+}
+
+/* PORTADA */
+
+.hero {
+    min-height: 560px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    background:
+    linear-gradient(90deg, #080b14 5%, rgba(8,11,20,.85) 42%, rgba(8,11,20,.15)),
+    linear-gradient(0deg, #080b14, transparent 45%),
+    url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1800&q=85');
+
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-content {
+    max-width: 1250px;
+    width: 100%;
+    margin: auto;
+    padding: 70px 25px;
+    animation: appear 1s ease;
+}
+
+.tag {
+    display: inline-block;
+    color: var(--cyan);
+    border: 1px solid var(--cyan);
+    padding: 7px 15px;
+    border-radius: 20px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin-bottom: 22px;
+}
+
+.hero h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(38px, 6vw, 75px);
+    line-height: 1.15;
+    max-width: 700px;
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    color: var(--cyan);
+    text-shadow: 0 0 25px #00e5ff66;
+}
+
+.hero p {
+    color: #cbd5e1;
+    max-width: 540px;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 14px 25px;
+    border-radius: 7px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+    transition: .3s;
+}
+
+.btn-primary {
+    background: var(--cyan);
+    color: #050914;
+    box-shadow: 0 0 20px #00e5ff33;
+}
+
+.btn-primary:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 30px #00e5ff77;
+}
+
+.btn-secondary {
+    background: #ffffff12;
+    color: white;
+    border: 1px solid #ffffff33;
+    margin-left: 10px;
+}
+
+.btn-secondary:hover {
+    background: #ffffff25;
+}
+
+/* ESTADÍSTICAS */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 15px;
+    max-width: 1000px;
+    margin: -35px auto 60px;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.stat {
+    background: #111827;
+    border: 1px solid #273044;
+    border-radius: 12px;
+    text-align: center;
+    padding: 22px 10px;
+}
+
+.stat h2 {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--cyan);
+    font-size: 27px;
+}
+
+.stat p {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* SECCIONES */
+
+section {
+    max-width: 1250px;
+    margin: auto;
+    padding: 45px 25px;
+}
+
+.section-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.section-subtitle {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+/* JUEGO DESTACADO */
+
+.featured {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    background: var(--card);
+    border: 1px solid #263147;
+    border-radius: 18px;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.featured img {
+    width: 100%;
+    height: 100%;
+    min-height: 300px;
+    object-fit: cover;
+}
+
+.featured-info {
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.featured-info h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 25px;
+    margin: 15px 0;
+}
+
+.featured-info p {
+    color: var(--muted);
+    line-height: 1.8;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.badge {
+    display: inline-block;
+    background: #a855f722;
+    color: #c084fc;
+    border: 1px solid #a855f744;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 11px;
+    width: fit-content;
+}
+
+/* BUSCADOR Y FILTROS */
+
+.search-box {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.search-box input {
+    flex: 1;
+    min-width: 0;
+    padding: 14px 18px;
+    border-radius: 8px;
+    background: #111827;
+    color: white;
+    border: 1px solid #273044;
+    outline: none;
+    font-family: inherit;
+}
+
+.search-box input:focus {
+    border-color: var(--cyan);
+}
+
+.filters {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.filter-btn {
+    padding: 9px 17px;
+    border-radius: 20px;
+    border: 1px solid #30394c;
+    background: #111827;
+    color: #cbd5e1;
+    cursor: pointer;
+    transition: .3s;
+    font-family: inherit;
+    font-size: 12px;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--cyan);
+    color: #080b14;
+    border-color: var(--cyan);
+}
+
+/* TARJETAS DE JUEGOS */
+
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 22px;
+}
+
+.game-card {
+    background: var(--card);
+    border: 1px solid #202b3e;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: .3s;
+    position: relative;
+}
+
+.game-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--cyan);
+    box-shadow: 0 10px 35px #00e5ff12;
+}
+
+.game-img {
+    height: 180px;
+    position: relative;
+    overflow: hidden;
+}
+
+.game-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .5s;
+}
+
+.game-card:hover .game-img img {
+    transform: scale(1.08);
+}
+
+.game-category {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: #080b14dd;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 10px;
+    color: var(--cyan);
+}
+
+.heart {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    background: #080b14cc;
+    color: white;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    transition: .2s;
+}
+
+.heart:hover {
+    transform: scale(1.15);
+}
+
+.heart.liked {
+    color: #ff4f8b;
+}
+
+.game-info {
+    padding: 17px;
+}
+
+.game-info h3 {
+    font-size: 16px;
+    margin-bottom: 7px;
+}
+
+.game-info p {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.6;
+    min-height: 40px;
+}
+
+.game-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    border-top: 1px solid #273044;
+    padding-top: 13px;
+}
+
+.rating {
+    color: #fbbf24;
+    font-size: 13px;
+}
+
+.details-btn {
+    background: transparent;
+    color: var(--cyan);
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.empty {
+    text-align: center;
+    color: var(--muted);
+    padding: 40px;
+    display: none;
+    grid-column: 1 / -1;
+}
+
+/* RULETA */
+
+.random-section {
+    margin-top: 50px;
+    padding: 45px;
+    border-radius: 15px;
+    text-align: center;
+    background:
+    radial-gradient(ellipse at top, #5b21b633, transparent 65%),
+    #111827;
+    border: 1px solid #4c287b;
+}
+
+.random-section h2 {
+    font-family: 'Orbitron', sans-serif;
+    margin-bottom: 15px;
+}
+
+.random-section p {
+    color: var(--muted);
+    margin-bottom: 25px;
+    font-size: 14px;
+}
+
+.random-result {
+    margin-top: 20px;
+    color: var(--cyan);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 20px;
+    min-height: 30px;
+}
+
+/* MODAL */
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background: #000c;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal-content {
+    background: #111827;
+    border: 1px solid var(--cyan);
+    border-radius: 15px;
+    max-width: 500px;
+    width: 100%;
+    padding: 30px;
+    position: relative;
+    animation: appear .3s ease;
+}
+
+.modal-content h2 {
+    font-family: 'Orbitron', sans-serif;
+    margin-bottom: 15px;
+}
+
+.modal-content p {
+    color: #cbd5e1;
+    line-height: 1.8;
+    font-size: 14px;
+}
+
+.close {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* FOOTER */
+
+footer {
+    margin-top: 60px;
+    border-top: 1px solid #202b3e;
+    text-align: center;
+    padding: 35px 20px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+footer .logo {
+    margin-bottom: 12px;
+}
+
+/* ANIMACIONES */
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 950px) {
+    .games-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .featured {
+        grid-template-columns: 1fr;
+    }
+
+    .featured img {
+        max-height: 300px;
+    }
+}
+
+@media (max-width: 600px) {
+    .nav-links {
+        display: none;
+    }
+
+    .hero {
+        min-height: 500px;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    .stats {
+        gap: 8px;
+    }
+
+    .stat h2 {
+        font-size: 20px;
+    }
+
+    .stat p {
+        font-size: 10px;
+    }
+
+    .games-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .game-img {
+        height: 220px;
+    }
+
+    .search-box {
+        flex-direction: column;
+    }
+
+    .random-section {
+        padding: 30px 15px;
+    }
+
+    .btn-secondary {
+        margin: 10px 0 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<nav>
+    <div class="logo">NEXUS<span>GAMING</span></div>
+
+    <ul class="nav-links">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#destacado">Destacado</a></li>
+        <li><a href="#catalogo">Juegos</a></li>
+        <li><a href="#descubrir">Descubrir</a></li>
+    </ul>
+
+    <div class="fav-counter">
+        ❤️ <span id="favCount">0</span>
+    </div>
+</nav>
+</header>
+
+<!-- PORTADA -->
+
+<div class="hero" id="inicio">
+    <div class="hero-content">
+        <span class="tag">BIENVENIDO AL UNIVERSO GAMER</span>
+
+        <h1>EL JUEGO<br>
+        <span>NO TERMINA</span></h1>
+
+        <p>
+            Explora nuevos mundos, descubre videojuegos increíbles
+            y encuentra tu próxima aventura.
+            Tu siguiente nivel comienza aquí.
+        </p>
+
+        <a href="#catalogo" class="btn btn-primary">
+            🎮 EXPLORAR JUEGOS
+        </a>
+
+        <a href="#descubrir" class="btn btn-secondary">
+            ✨ Sorpréndeme
+        </a>
+    </div>
+</div>
+
+<!-- ESTADÍSTICAS -->
+
+<div class="stats">
+    <div class="stat">
+        <h2>08+</h2>
+        <p>Videojuegos</p>
+    </div>
+
+    <div class="stat">
+        <h2>04</h2>
+        <p>Categorías</p>
+    </div>
+
+    <div class="stat">
+        <h2>∞</h2>
+        <p>Aventuras</p>
+    </div>
+</div>
+
+<!-- JUEGO DESTACADO -->
+
+<section id="destacado">
+    <h2 class="section-title">⚡ JUEGO DESTACADO</h2>
+    <p class="section-subtitle">
+        Una aventura que no te puedes perder.
+    </p>
+
+    <div class="featured">
+        <img
+        src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1000&q=85"
+        alt="Setup gamer">
+
+        <div class="featured-info">
+            <span class="badge">⭐ RECOMENDACIÓN NEXUS</span>
+
+            <h3>Grand Theft Auto V</h3>
+
+            <p>
+                Explora Los Santos, vive aventuras en un mundo abierto
+                y descubre una ciudad llena de posibilidades.
+                Conduce, explora y disfruta de una experiencia
+                de acción inolvidable.
+            </p>
+
+            <button class="btn btn-primary"
+            onclick="showDetails('Grand Theft Auto V')">
+                VER DETALLES →
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- CATÁLOGO -->
+
+<section id="catalogo">
+    <h2 class="section-title">🎮 EXPLORA LOS JUEGOS</h2>
+
+    <p class="section-subtitle">
+        Encuentra tu próximo videojuego favorito.
+    </p>
+
+    <div class="search-box">
+        <input
+        type="text"
+        id="searchInput"
+        placeholder="🔍 Buscar videojuegos..."
+        oninput="renderGames()">
+    </div>
+
+    <div class="filters">
+        <button class="filter-btn active"
+        onclick="setFilter('Todos',this)">Todos</button>
+
+        <button class="filter-btn"
+        onclick="setFilter('Acción',this)">Acción</button>
+
+        <button class="filter-btn"
+        onclick="setFilter('Aventura',this)">Aventura</button>
+
+        <button class="filter-btn"
+        onclick="setFilter('Carreras',this)">Carreras</button>
+
+        <button class="filter-btn"
+        onclick="setFilter('Supervivencia',this)">Supervivencia</button>
+
+        <button class="filter-btn"
+        onclick="setFilter('Favoritos',this)">❤️ Favoritos</button>
+    </div>
+
+    <div class="games-grid" id="gamesGrid">
+
+        <div class="empty" id="emptyMessage">
+            No se encontraron videojuegos 😕
+        </div>
+
+    </div>
+</section>
+
+<!-- DESCUBRIR JUEGO -->
+
+<section id="descubrir">
+    <div class="random-section">
+        <h2>🎲 ¿NO SABES A QUÉ JUGAR?</h2>
+
+        <p>
+            Deja que NEXUS elija un videojuego aleatorio para ti.
+            ¡Quizás encuentres tu nueva obsesión!
+        </p>
+
+        <button class="btn btn-primary" onclick="randomGame()">
+            🎮 DESCUBRIR JUEGO
+        </button>
+
+        <div class="random-result" id="randomResult"></div>
+    </div>
+</section>
+
+<!-- VENTANA DE DETALLES -->
+
+<div class="modal" id="gameModal" onclick="closeOutside(event)">
+    <div class="modal-content">
+        <button class="close" onclick="closeModal()">×</button>
+
+        <span class="badge">NEXUS GAMING</span>
+
+        <h2 id="modalTitle" style="margin-top:20px"></h2>
+
+        <p id="modalDescription"></p>
+
+        <br>
+
+        <button class="btn btn-primary" onclick="closeModal()">
+            ENTENDIDO
+        </button>
+    </div>
+</div>
+
+<footer>
+    <div class="logo">NEXUS<span>GAMING</span></div>
+
+    <p>Tu universo. Tus juegos. Tu siguiente nivel.</p>
+
+    <br>
+
+    <p>© 2026 NEXUS GAMING | Proyecto Web Gamer</p>
+</footer>
+
+<script>
+
+// BASE DE DATOS DE VIDEOJUEGOS
+
+const games = [
+{
+    name: "Minecraft",
+    category: "Aventura",
+    rating: "⭐ 9.5",
+    image: "https://images.unsplash.com/photo-1607513746994-51f730a44832?auto=format&fit=crop&w=700&q=80",
+    description: "Construye, explora y sobrevive en un mundo de bloques donde tu imaginación es el límite."
+},
+{
+    name: "Grand Theft Auto V",
+    category: "Acción",
+    rating: "⭐ 9.3",
+    image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=700&q=80",
+    description: "Explora una enorme ciudad, conduce vehículos y vive una aventura de mundo abierto."
+},
+{
+    name: "Fortnite",
+    category: "Acción",
+    rating: "⭐ 8.9",
+    image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=700&q=80",
+    description: "Compite, construye y enfréntate a otros jugadores en emocionantes partidas."
+},
+{
+    name: "Forza Horizon",
+    category: "Carreras",
+    rating: "⭐ 9.2",
+    image: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=700&q=80",
+    description: "Disfruta de carreras, autos increíbles y paisajes espectaculares."
+},
+{
+    name: "Red Dead Redemption 2",
+    category: "Aventura",
+    rating: "⭐ 9.8",
+    image: "https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=700&q=80",
+    description: "Sumérgete en el viejo oeste con una historia profunda y un mundo lleno de detalles."
+},
+{
+    name: "The Last of Us",
+    category: "Supervivencia",
+    rating: "⭐ 9.6",
+    image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=700&q=80",
+    description: "Sobrevive en un mundo devastado y descubre una historia llena de desafíos."
+},
+{
+    name: "Rocket League",
+    category: "Carreras",
+    rating: "⭐ 8.7",
+    image: "https://images.unsplash.com/photo-1511882150382-421056c89033?auto=format&fit=crop&w=700&q=80",
+    description: "Combina fútbol y vehículos en partidos llenos de velocidad y acrobacias."
+},
+{
+    name: "Elden Ring",
+    category: "Aventura",
+    rating: "⭐ 9.7",
+    image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=700&q=80",
+    description: "Explora un mundo fantástico, descubre secretos y enfréntate a poderosos enemigos."
+}
+];
+
+// ESTADO DE LA PÁGINA
+
+let currentFilter = "Todos";
+
+let favorites = JSON.parse(
+    localStorage.getItem("nexusFavorites") || "[]"
+);
+
+// DIBUJAR VIDEOJUEGOS
+
+function renderGames() {
+
+    const grid = document.getElementById("gamesGrid");
+
+    const search = document
+        .getElementById("searchInput")
+        .value.toLowerCase();
+
+    grid.innerHTML = "";
+
+    let filtered = games.filter(game => {
+
+        const matchesSearch =
+            game.name.toLowerCase().includes(search) ||
+            game.category.toLowerCase().includes(search);
+
+        const matchesCategory =
+            currentFilter === "Todos" ||
+            game.category === currentFilter ||
+            (currentFilter === "Favoritos" &&
+            favorites.includes(game.name));
+
+        return matchesSearch && matchesCategory;
+    });
+
+    document.getElementById("emptyMessage").style.display =
+        filtered.length === 0 ? "block" : "none";
+
+    filtered.forEach(game => {
+
+        const isLiked = favorites.includes(game.name);
+
+        const card = document.createElement("div");
+
+        card.className = "game-card";
+
+        card.innerHTML = `
+            <div class="game-img">
+
+                <img src="${game.image}"
+                alt="${game.name}"
+                loading="lazy">
+
+                <span class="game-category">
+                    ${game.category}
+                </span>
+
+                <button class="heart ${isLiked ? 'liked' : ''}"
+                onclick="toggleFavorite('${game.name}')">
+                    ${isLiked ? '♥' : '♡'}
+                </button>
+
+            </div>
+
+            <div class="game-info">
+
+                <h3>${game.name}</h3>
+
+                <p>${game.description}</p>
+
+                <div class="game-bottom">
+
+                    <span class="rating">${game.rating}</span>
+
+                    <button class="details-btn"
+                    onclick="showDetails('${game.name}')">
+                        DETALLES →
+                    </button>
+
+                </div>
+
+            </div>
+        `;
+
+        grid.appendChild(card);
+    });
+
+    document.getElementById("favCount").textContent =
+        favorites.length;
+}
+
+// FILTROS
+
+function setFilter(filter, button) {
+
+    currentFilter = filter;
+
+    document.querySelectorAll(".filter-btn").forEach(btn => {
+        btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+
+    renderGames();
+}
+
+// FAVORITOS
+
+function toggleFavorite(name) {
+
+    if (favorites.includes(name)) {
+
+        favorites = favorites.filter(game => game !== name);
+
+    } else {
+
+        favorites.push(name);
+    }
+
+    localStorage.setItem(
+        "nexusFavorites",
+        JSON.stringify(favorites)
+    );
+
+    renderGames();
+}
+
+// DETALLES DEL VIDEOJUEGO
