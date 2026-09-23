@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090b14">
+<title>NEXUS GAMING APP</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Poppins:wght@400;500;600;700&display=swap');
+:root{--bg:#090b14;--panel:#121727;--panel2:#191f32;--cyan:#00e5ff;--purple:#a855f7;--text:#f5f7ff;--muted:#9aa4bb;--line:#293149}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:Poppins,Arial,sans-serif;min-height:100vh;padding-bottom:90px}
+button,input{font:inherit}button{cursor:pointer}
+.app{max-width:1180px;margin:auto;padding:0 18px}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:20px 0;position:sticky;top:0;background:#090b14eF;backdrop-filter:blur(14px);z-index:20;border-bottom:1px solid #ffffff0c}
+.logo{font:800 21px Orbitron,sans-serif;letter-spacing:1px}.logo b{color:var(--cyan)}
+.avatar{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,var(--purple),var(--cyan));display:grid;place-items:center;font-size:20px}
+.eyebrow{font-size:11px;color:var(--cyan);letter-spacing:2px;font-weight:700}
+h1,h2,h3{font-family:Orbitron,sans-serif}
+.welcome{padding:28px 0 18px}.welcome h1{font-size:clamp(25px,5vw,39px);margin:8px 0}.welcome p{color:var(--muted);font-size:13px}
+.hero{position:relative;min-height:290px;border-radius:22px;overflow:hidden;padding:30px;display:flex;align-items:end;background:linear-gradient(90deg,#090b14 0%,#090b14d9 42%,#090b1440),linear-gradient(0deg,#090b14aa,transparent),url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1500&q=85') center/cover;border:1px solid #ffffff12}
+.hero-content{max-width:560px;position:relative}.pill{display:inline-block;background:#00e5ff18;border:1px solid #00e5ff55;color:var(--cyan);border-radius:30px;padding:6px 11px;font-size:10px;font-weight:700;letter-spacing:1px}
+.hero h2{font-size:clamp(25px,5vw,42px);line-height:1.15;margin:13px 0}.hero h2 span{color:var(--cyan)}.hero p{font-size:13px;color:#c3cadd;line-height:1.7;margin-bottom:18px}
+.primary{background:var(--cyan);color:#061018;border:0;border-radius:10px;padding:12px 18px;font-weight:700;box-shadow:0 0 22px #00e5ff24}.secondary{background:#ffffff12;color:white;border:1px solid #ffffff22;border-radius:10px;padding:11px 16px;font-weight:600}
+.section-head{display:flex;align-items:center;justify-content:space-between;margin:30px 0 15px}.section-head h2{font-size:18px}.text-btn{border:0;background:none;color:var(--cyan);font-size:12px;font-weight:600}
+.quick-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}.stat{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:15px}.stat strong{display:block;font:700 20px Orbitron;color:var(--cyan)}.stat span{font-size:11px;color:var(--muted)}
+.search{display:flex;gap:10px;margin:16px 0}.search input{width:100%;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:13px 15px;color:white;outline:none}.search input:focus{border-color:var(--cyan)}
+.filters{display:flex;gap:8px;overflow-x:auto;padding:2px 0 14px}.filter{white-space:nowrap;border:1px solid var(--line);background:var(--panel);color:#c8d0e2;border-radius:30px;padding:8px 14px;font-size:11px}.filter.active{background:var(--cyan);color:#071018;border-color:var(--cyan);font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}.card{background:var(--panel);border:1px solid var(--line);border-radius:15px;overflow:hidden;transition:.25s}.card:hover{transform:translateY(-4px);border-color:#00e5ff88}.cover{height:150px;position:relative}.cover img{width:100%;height:100%;object-fit:cover}.genre{position:absolute;left:9px;top:9px;background:#090b14dc;border-radius:6px;padding:5px 8px;font-size:9px;color:var(--cyan)}.heart{position:absolute;right:9px;top:8px;border:0;border-radius:50%;width:31px;height:31px;background:#090b14d9;color:#fff;font-size:18px}.heart.on{color:#ff5b9a}.card-body{padding:13px}.card h3{font:700 13px Poppins,sans-serif;margin-bottom:5px}.card p{font-size:10px;line-height:1.5;color:var(--muted);min-height:31px}.card-foot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:10px;margin-top:10px}.rating{font-size:11px;color:#ffd166}.details{background:none;border:0;color:var(--cyan);font-size:10px;font-weight:700}
+.page{display:none;animation:fade .25s ease}.page.active{display:block}.page-title{padding:28px 0 6px;font-size:25px}.sub{color:var(--muted);font-size:13px;margin-bottom:16px}
+.random-box{margin-top:25px;padding:25px;border:1px solid #60369a;border-radius:18px;text-align:center;background:radial-gradient(ellipse at top,#5b21b633,transparent 70%),var(--panel)}.random-box h2{font-size:19px;margin-bottom:10px}.random-box p{font-size:12px;color:var(--muted);margin-bottom:17px}.random-result{margin-top:15px;color:var(--cyan);font:700 16px Orbitron;min-height:24px}
+.profile-card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:24px;text-align:center;margin-top:20px}.profile-icon{font-size:40px;margin-bottom:12px}.profile-card h2{font-size:19px}.profile-card p{font-size:12px;color:var(--muted);margin:8px 0 18px}.profile-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.empty{display:none;grid-column:1/-1;text-align:center;padding:35px;color:var(--muted);font-size:13px}
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;z-index:30;background:#101523f2;backdrop-filter:blur(18px);border-top:1px solid var(--line);display:flex;justify-content:center;padding:9px 8px calc(9px + env(safe-area-inset-bottom))}
+.nav-inner{width:100%;max-width:700px;display:grid;grid-template-columns:repeat(5,1fr);gap:4px}.nav-btn{border:0;background:none;color:#7f8aa3;padding:7px 2px;border-radius:10px;font-size:10px;display:flex;flex-direction:column;align-items:center;gap:4px}.nav-btn .ico{font-size:19px}.nav-btn.active{color:var(--cyan);background:#00e5ff10}
+.modal{display:none;position:fixed;inset:0;background:#000c;z-index:50;align-items:center;justify-content:center;padding:18px}.modal.show{display:flex}.modal-box{width:100%;max-width:480px;background:var(--panel);border:1px solid var(--cyan);border-radius:18px;padding:25px;position:relative}.modal-box h2{font-size:20px;margin:12px 0}.modal-box p{font-size:13px;color:#c4ccdd;line-height:1.8}.close{position:absolute;right:13px;top:10px;background:none;border:0;color:white;font-size:27px}
+footer{text-align:center;color:#66718a;font-size:10px;padding:40px 0 15px}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:850px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.cover{height:135px}}
+@media(max-width:600px){.app{padding:0 14px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.cover{height:125px}.hero{min-height:300px;padding:22px;background-position:58% center}.quick-stats{gap:8px}.stat{padding:12px}.stat strong{font-size:17px}.stat span{font-size:10px}.welcome{padding-top:22px}.section-head h2{font-size:15px}}
+@media(max-width:360px){.grid{grid-template-columns:1fr}.cover{height:180px}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="topbar">
+  <div class="logo">NEXUS<b>GAMING</b></div>
+  <div class="avatar">🎮</div>
+</header>
+
+<main>
+<section class="page active" id="home">
+  <div class="welcome"><div class="eyebrow">TU UNIVERSO GAMER</div><h1>¡Hola, jugador! 👾</h1><p>¿Listo para encontrar tu próxima aventura?</p></div>
+  <div class="hero"><div class="hero-content"><span class="pill">⚡ EXPERIENCIA GAMER</span><h2>SUBE DE<br><span>NIVEL</span></h2><p>Explora mundos increíbles, descubre títulos populares y crea tu propia colección de videojuegos.</p><button class="primary" onclick="navigate('explore')">Explorar juegos&nbsp; →</button></div></div>
+  <div class="quick-stats">
+    <div class="stat"><strong id="totalGames">08</strong><span>Videojuegos</span></div>
+    <div class="stat"><strong>04</strong><span>Categorías</span></div>
+    <div class="stat"><strong id="homeFav">0</strong><span>Favoritos ❤️</span></div>
+  </div>
+  <div class="section-head"><h2>🔥 Juegos populares</h2><button class="text-btn" onclick="navigate('explore')">Ver todos →</button></div>
+  <div class="grid" id="homeGrid"></div>
+  <div class="random-box"><h2>🎲 ¿Qué jugamos hoy?</h2><p>Deja que NEXUS elija una aventura al azar.</p><button class="primary" onclick="randomGame()">Descubrir juego</button><div class="random-result" id="homeRandom"></div></div>
+</section>
+
+<section class="page" id="explore">
+  <h1 class="page-title">Explorar 🎮</h1><p class="sub">Encuentra tu siguiente videojuego favorito.</p>
+  <div class="search"><input id="searchInput" placeholder="🔍 Buscar videojuegos..." oninput="renderExplore()"></div>
+  <div class="filters" id="filters">
+    <button class="filter active" onclick="setFilter('Todos',this)">Todos</button>
+    <button class="filter" onclick="setFilter('Acción',this)">Acción</button>
+    <button class="filter" onclick="setFilter('Aventura',this)">Aventura</button>
+    <button class="filter" onclick="setFilter('Carreras',this)">Carreras</button>
+    <button class="filter" onclick="setFilter('Supervivencia',this)">Supervivencia</button>
+  </div>
+  <div class="grid" id="exploreGrid"><div class="empty" id="exploreEmpty">No se encontraron juegos. Intenta otra búsqueda.</div></div>
+</section>
+
+<section class="page" id="favorites">
+  <h1 class="page-title">Mis favoritos ❤️</h1><p class="sub">Tu colección personal, guardada en este dispositivo.</p>
+  <div class="grid" id="favoritesGrid"><div class="empty" id="favEmpty">Aún no tienes favoritos. Toca ♡ en un juego para guardarlo.</div></div>
+</section>
+
+<section class="page" id="discover">
+  <h1 class="page-title">Descubrir ✨</h1><p class="sub">Una nueva aventura está a un toque de distancia.</p>
+  <div class="random-box"><h2>🎲 Ruleta gamer</h2><p>Presiona el botón y descubre cuál será tu próximo juego.</p><button class="primary" onclick="randomGame()">¡Sorpréndeme!</button><div class="random-result" id="discoverRandom"></div></div>
+  <div class="section-head"><h2>💎 Recomendación del día</h2></div><div class="grid" id="recommendGrid"></div>
+</section>
+
+<section class="page" id="profile">
+  <h1 class="page-title">Mi perfil 👤</h1><p class="sub">Tu espacio dentro de NEXUS GAMING.</p>
+  <div class="profile-card"><div class="profile-icon">🕹️</div><h2>Jugador NEXUS</h2><p>Explorador de mundos digitales</p><div class="quick-stats"><div class="stat"><strong id="profileFav">0</strong><span>Favoritos</span></div><div class="stat"><strong id="profileTotal">8</strong><span>Juegos vistos</span></div><div class="stat"><strong>LVL 1</strong><span>Nivel</span></div></div><div class="profile-actions"><button class="secondary" onclick="navigate('favorites')">Ver favoritos</button><button class="secondary" onclick="clearFavorites()">Limpiar favoritos</button></div></div>
+</section>
+</main>
+<footer>NEXUS GAMING APP · Tu universo. Tus juegos. Tu siguiente nivel.</footer>
+</div>
+
+<nav class="bottom-nav"><div class="nav-inner">
+<button class="nav-btn active" data-page="home" onclick="navigate('home')"><span class="ico">⌂</span>Inicio</button>
+<button class="nav-btn" data-page="explore" onclick="navigate('explore')"><span class="ico">🎮</span>Explorar</button>
+<button class="nav-btn" data-page="favorites" onclick="navigate('favorites')"><span class="ico">♥</span>Favoritos</button>
+<button class="nav-btn" data-page="discover" onclick="navigate('discover')"><span class="ico">✦</span>Descubrir</button>
+<button class="nav-btn" data-page="profile" onclick="navigate('profile')"><span class="ico">◉</span>Perfil</button>
+</div></nav>
+
+<div class="modal" id="modal" onclick="closeOutside(event)"><div class="modal-box"><button class="close" onclick="closeModal()">×</button><span class="pill">NEXUS GAME INFO</span><h2 id="modalTitle"></h2><p id="modalText"></p><br><button class="primary" onclick="closeModal()">Listo</button></div></div>
+
+<script>
+const games=[
+{name:"Minecraft",category:"Aventura",rating:"9.5",image:"https://images.unsplash.com/photo-1607513746994-51f730a44832?auto=format&fit=crop&w=700&q=80",description:"Construye, explora y sobrevive en un mundo de bloques donde tu imaginación es el límite."},
+{name:"GTA V",category:"Acción",rating:"9.3",image:"https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=700&q=80",description:"Explora una enorme ciudad, conduce vehículos y vive una aventura de mundo abierto."},
+{name:"Fortnite",category:"Acción",rating:"8.9",image:"https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=700&q=80",description:"Compite, construye y enfréntate a otros jugadores en partidas llenas de acción."},
+{name:"Forza Horizon",category:"Carreras",rating:"9.2",image:"https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=700&q=80",description:"Disfruta de carreras, autos increíbles y paisajes espectaculares."},
+{name:"Red Dead Redemption 2",category:"Aventura",rating:"9.8",image:"https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=700&q=80",description:"Sumérgete en el viejo oeste con una historia profunda y un mundo lleno de detalles."},
+{name:"The Last of Us",category:"Supervivencia",rating:"9.6",image:"https://images.unsplash.com/photo-1500530858047-e8c2f6a8c1c6?auto=format&fit=crop&w=700&q=80",description:"Sobrevive en un mundo desafiante y descubre una historia llena de emociones."},
+{name:"Rocket League",category:"Carreras",rating:"8.7",image:"https://images.unsplash.com/photo-1511882150382-421056c89033?auto=format&fit=crop&w=700&q=80",description:"Combina fútbol y vehículos en partidos llenos de velocidad y acrobacias."},
+{name:"Elden Ring",category:"Aventura",rating:"9.7",image:"https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=700&q=80",description:"Explora un mundo fantástico, descubre secretos y enfréntate a poderosos enemigos."}
+];
+let filter="Todos";
+let favorites=JSON.parse(localStorage.getItem("nexusAppFavorites")||"[]");
+function card(game){let liked=favorites.includes(game.name);return `<article class="card"><div class="cover"><img src="${game.image}" alt="${game.name}" loading="lazy"><span class="genre">${game.category}</span><button class="heart ${liked?'on':''}" aria-label="Favorito" onclick="toggleFavorite('${game.name}')">${liked?'♥':'♡'}</button></div><div class="card-body"><h3>${game.name}</h3><p>${game.description}</p><div class="card-foot"><span class="rating">★ ${game.rating}</span><button class="details" onclick="showDetails('${game.name}')">DETALLES ↗</button></div></div></article>`}
+function renderHome(){document.getElementById("homeGrid").innerHTML=games.slice(0,4).map(card).join("");}
+function renderExplore(){let q=(document.getElementById("searchInput")?.value||"").toLowerCase();let list=games.filter(g=>(filter==="Todos"||g.category===filter)&&(`${g.name} ${g.category}`.toLowerCase().includes(q)));document.getElementById("exploreGrid").innerHTML=list.map(card).join("")+`<div class="empty" style="display:${list.length?'none':'block'}">No se encontraron juegos. Intenta otra búsqueda.</div>`;}
+function renderFavorites(){let list=games.filter(g=>favorites.includes(g.name));document.getElementById("favoritesGrid").innerHTML=list.map(card).join("")+`<div class="empty" style="display:${list.length?'none':'block'}">Aún no tienes favoritos. Toca ♡ en un juego para guardarlo.</div>`;}
+function renderAll(){renderHome();renderExplore();renderFavorites();document.getElementById("recommendGrid").innerHTML=card(games[4]);document.getElementById("favCount")&&(document.getElementById("favCount").textContent=favorites.length);document.getElementById("homeFav").textContent=favorites.length;document.getElementById("profileFav").textContent=favorites.length;document.getElementById("profileTotal").textContent=games.length;}
+function toggleFavorite(name){favorites=favorites.includes(name)?favorites.filter(x=>x!==name):[...favorites,name];localStorage.setItem("nexusAppFavorites",JSON.stringify(favorites));renderAll();}
+function setFilter(f,btn){filter=f;document.querySelectorAll(".filter").forEach(b=>b.classList.remove("active"));btn.classList.add("active");renderExplore();}
+function navigate(page){document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));document.getElementById(page).classList.add("active");document.querySelectorAll(".nav-btn").forEach(b=>b.classList.toggle("active",b.dataset.page===page));window.scrollTo({top:0,behavior:"smooth"});if(page==="favorites")renderFavorites();}
+function showDetails(name){let g=games.find(x=>x.name===name);if(!g)return;document.getElementById("modalTitle").textContent=g.name;document.getElementById("modalText").textContent=g.description+" Género: "+g.category+". Valoración: "+g.rating+"/10.";document.getElementById("modal").classList.add("show");}
+function closeModal(){document.getElementById("modal").classList.remove("show");}
+function closeOutside(e){if(e.target.id==="modal")closeModal();}
+function randomGame(){let g=games[Math.floor(Math.random()*games.length)];let text="🎮 "+g.name;["homeRandom","discoverRandom"].forEach(id=>{let el=document.getElementById(id);if(el)el.textContent=text;});}
+function clearFavorites(){if(confirm("¿Seguro que quieres borrar todos tus favoritos?")){favorites=[];localStorage.setItem("nexusAppFavorites","[]");renderAll();}}
+renderAll();
+</script>
+</body>
+</html>
